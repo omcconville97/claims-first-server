@@ -1,11 +1,15 @@
 package com.allstate.claimsfirstserver.domain;
 
-
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name = "claim")
 public class Claim {
 
+   @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
    private String policyNumber;
    private String title;
