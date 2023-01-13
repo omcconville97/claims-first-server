@@ -32,4 +32,9 @@ public class ClaimServiceImpl implements ClaimService{
             throw new ClaimNotFoundException("There is no claim with id " +id);
         }
     }
+
+    @Override
+    public List<Claim> getByInsuranceType(String insuranceType) {
+        return claimRepository.findAllByInsuranceType(insuranceType);
+    }
 }

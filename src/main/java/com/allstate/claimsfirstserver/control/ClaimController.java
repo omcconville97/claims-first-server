@@ -17,7 +17,7 @@ public class ClaimController {
     private ClaimService claimService;
 
     @GetMapping()
-    public List<Claim> getAllClaims() {
+    public List<Claim> getAllClaims(@RequestParam(value = "insuranceType", required = false) String insuranceType) {
         return claimService.getAllClaims();
     }
 
