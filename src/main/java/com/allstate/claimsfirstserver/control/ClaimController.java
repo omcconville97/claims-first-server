@@ -18,7 +18,12 @@ public class ClaimController {
 
     @GetMapping()
     public List<Claim> getAllClaims(@RequestParam(value = "insuranceType", required = false) String insuranceType) {
-        return claimService.getAllClaims();
+        if (insuranceType == null) {
+            return claimService.getAllClaims();
+        }
+        else {
+            return claimService.getByInsuranceType(insuranceType);
+        }
     }
 
     @GetMapping("/{id}")
