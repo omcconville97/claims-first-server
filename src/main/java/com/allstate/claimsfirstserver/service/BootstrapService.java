@@ -19,9 +19,9 @@ public class BootstrapService {
    public void setUpInitialData(){
       int numberOfClaims = claimRepository.findAll().size();
       if (numberOfClaims == 0) {
-         Claim newClaim = new Claim(1,"CF101", "Mr", "John", "Smith", "j.smith@gmail.com", "07785345869","Home", firstDate,
-               400.00, "", "", 1997,
-               "", "", "", "", "", "Accepted - Paid", firstDate, "" );
+         Claim newClaim = new Claim(1,"CF101", "Mr", "John", "Smith", "j.smith@gmail.com", "07785345869","Vehicle", firstDate,
+               400.00, "Toyota", "Prius", 2014,
+               "", "", "", "Exterior damage", "Reversed into tree", "Accepted - Paid", firstDate, "Claim validated and accepted" );
          Claim savedClaim = claimRepository.save(newClaim);
          //this automatically will add an id to the car because autogenerate starts at null
          System.out.println("Claim saved with id " + savedClaim.getId());

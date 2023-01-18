@@ -26,6 +26,11 @@ public class ClaimController {
         }
     }
 
+    @GetMapping("/openclaim")
+    public List<Claim> getByStatus(@RequestParam(value = "status", required = false) String status) {
+            return claimService.getByStatus(status);
+    }
+
     @GetMapping("/{id}")
     public Claim findById(@PathVariable Integer id) throws ClaimNotFoundException {
         return claimService.getById(id);
