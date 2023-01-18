@@ -42,4 +42,9 @@ public class ClaimServiceImpl implements ClaimService{
     public List<Claim> getByStatus(String status) {
         return claimRepository.findAllByStatus(status);
     }
+
+    @Override
+    public List<Claim> getByPolicyNumber(String policyNumber) {
+        return claimRepository.findAllByPolicyNumber(policyNumber);
+    }
 }

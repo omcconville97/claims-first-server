@@ -26,6 +26,11 @@ public class ClaimController {
         }
     }
 
+    @GetMapping("/policy")
+    public List<Claim> getByPolicyNumber(@RequestParam(value = "policyNumber", required = false) String policyNumber) {
+        return claimService.getByPolicyNumber(policyNumber);
+    }
+
     @GetMapping("/openclaim")
     public List<Claim> getByStatus(@RequestParam(value = "status", required = false) String status) {
             return claimService.getByStatus(status);
