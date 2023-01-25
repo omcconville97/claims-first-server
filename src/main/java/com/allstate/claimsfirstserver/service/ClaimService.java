@@ -4,6 +4,7 @@ import com.allstate.claimsfirstserver.domain.Claim;
 import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ClaimService {
 
@@ -19,4 +20,6 @@ public interface ClaimService {
    public List<String> getAllInsuranceTypes();
 
    public Claim saveClaim(Claim claim);
+
+   public Claim updateClaim(Integer id, Map<String, Object> fields);
 }

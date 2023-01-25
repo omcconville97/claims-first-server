@@ -6,7 +6,10 @@ import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -59,6 +62,78 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public Claim saveClaim(Claim claim) {
+        return claimRepository.save(claim);
+    }
+
+    @Override
+    public Claim updateClaim(Integer id, Map<String, Object> fields) {
+        Claim claim = claimRepository.findById(id).get(); //should really check it is there + throw an exception
+
+        if (fields.containsKey("title")) {
+            claim.setTitle(fields.get("title").toString());
+        }
+        if (fields.containsKey("firstName")) {
+            claim.setFirstName(fields.get("firstName").toString());
+        }
+        if (fields.containsKey("surname")) {
+            claim.setSurname(fields.get("surname").toString());
+        }
+        if (fields.containsKey("email")) {
+            claim.setEmail(fields.get("email").toString());
+        }
+        if (fields.containsKey("phoneNumber")) {
+            claim.setPhoneNumber(fields.get("phoneNumber").toString());
+        }
+        if (fields.containsKey("insuranceType")) {
+            claim.setInsuranceType(fields.get("insuranceType").toString());
+        }
+        if (fields.containsKey("estimatedWorth")) {
+            claim.setEstimatedWorth(Double.parseDouble(fields.get("estimatedWorth").toString()));
+        }
+        if (fields.containsKey("vehicleMake")) {
+            claim.setVehicleMake(fields.get("vehicleMake").toString());
+        }
+        if (fields.containsKey("vehicleModel")) {
+            claim.setVehicleModel(fields.get("vehicleModel").toString());
+        }
+        if (fields.containsKey("vehicleYear")) {
+            claim.setVehicleYear(Integer.parseInt(fields.get("vehicleYear").toString()));
+        }
+        if (fields.containsKey("propertyAddress")) {
+            claim.setPropertyAddress(fields.get("propertyAddress").toString());
+        }
+        if (fields.containsKey("animalType")) {
+            claim.setAnimalType(fields.get("animalType").toString());
+        }
+        if (fields.containsKey("animalBreed")) {
+            claim.setAnimalBreed(fields.get("animalBreed").toString());
+        }
+        if (fields.containsKey("reason")) {
+            claim.setReason(fields.get("reason").toString());
+        }
+        if (fields.containsKey("description")) {
+            claim.setDescription(fields.get("description").toString());
+        }
+        if (fields.containsKey("status")) {
+            claim.setStatus(fields.get("status").toString());
+        }
+        if (fields.containsKey("taskNote")) {
+            claim.setTaskNote(fields.get("taskNote").toString());
+        }
+//        if (fields.containsKey("taskDate")) {
+//            claim.setTaskDate(Date.from(Instant.parse(fields.get("taskDate").toString())));
+//        }
+
+
+        //update those fields that have changed
+//        if (fields.containsKey("country")) {
+//            payment.setCountry(fields.get("country").toString());
+//        }
+//        if (fields.containsKey("amount")) {
+//            //any logic eg is amount > 0?
+//            payment.setAmount(Double.parseDouble(fields.get("amount").toString()));
+//        }
+        //save and return the payment
         return claimRepository.save(claim);
     }
 }
