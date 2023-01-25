@@ -56,4 +56,9 @@ public class ClaimServiceImpl implements ClaimService{
                 .distinct()
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Claim saveClaim(Claim claim) {
+        return claimRepository.save(claim);
+    }
 }
