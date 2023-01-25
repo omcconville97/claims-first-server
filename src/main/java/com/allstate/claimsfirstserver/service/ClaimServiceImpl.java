@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ClaimServiceImpl implements ClaimService{
@@ -46,5 +47,13 @@ public class ClaimServiceImpl implements ClaimService{
     @Override
     public List<Claim> getByPolicyNumber(String policyNumber) {
         return claimRepository.findAllByPolicyNumber(policyNumber);
+    }
+
+    @Override
+    public List<String> getAllInsuranceTypes() {
+        return claimRepository.findAll().stream()
+                .map( claim -> claim.getInsuranceType().toLowerCase())
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
