@@ -130,7 +130,7 @@ public class ClaimServiceImpl implements ClaimService{
 //            payment.setCountry(fields.get("country").toString());
 //        }
 //        if (fields.containsKey("amount")) {
-//            //any logic eg is amount > 0?
+//            //any logic e.g. is amount > 0?
 //            payment.setAmount(Double.parseDouble(fields.get("amount").toString()));
 //        }
         //save and return the payment
