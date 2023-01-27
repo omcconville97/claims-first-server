@@ -38,12 +38,24 @@ public class BootstrapService {
          Claim claim6 = new Claim(6, "CF109", "Mr","Conor","Beattie", "c.beattie@gmail.com","07854254632", "Pet", firstDate, 750.00, "", "", 0,
                  "", "Fish", "Gold Fish", "Surgery", "collapsed gill", "Rejected", firstDate, "Claim rejected as surgery costing over threshold");
 
+         Claim claim7 = new Claim(7, "CF109", "Mr","Conor","Beattie", "c.beattie@gmail.com","07854254632", "Home", firstDate, 450.00, "", "", 0,
+                 "19 LakeLand View", "", "", "Brick Damage", "Adverse weather condition", "Awaiting Assessment", firstDate, "");
+
+         Claim claim8 = new Claim(8, "CF110", "Mrs","Emma","Grant", "e.grant@gmail.com","07757254652", "Vehicle", firstDate, 250.00, "Audi", "TT", 2018,
+                 "", "", "", "Alloy Damage", "Drove into kerb", "On Going", firstDate, "Further investigation required");
+
+         Claim claim9 = new Claim(9, "CF110", "Mrs","Emma","Grant", "e.grant@gmail.com","07757254652", "Home", firstDate, 340.00, "", "", 0,
+                 "39 Pleasant Park", "", "", "Electrical Damage", "Faulty damaged good", "Accepted - Awaiting Payment", firstDate, "Claim Accepted and waiting on customer being paid");
+
          claimRepository.save(claim1);
          claimRepository.save(claim2);
          claimRepository.save(claim3);
          claimRepository.save(claim4);
          claimRepository.save(claim5);
          claimRepository.save(claim6);
+         claimRepository.save(claim7);
+         claimRepository.save(claim8);
+         claimRepository.save(claim9);
 
       }
    }

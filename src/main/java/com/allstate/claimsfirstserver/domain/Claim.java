@@ -1,5 +1,7 @@
 package com.allstate.claimsfirstserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -18,6 +20,7 @@ public class Claim {
    private String email;
    private String phoneNumber;
    private String insuranceType;
+   @JsonFormat(pattern = "yyyy-MM-dd")
    private Date date;
    private Double estimatedWorth;
    private String vehicleMake;
@@ -29,6 +32,7 @@ public class Claim {
    private String reason;
    private String description;
    private String status;
+   @JsonFormat(pattern = "yyyy-MM-dd")
    private Date taskDate;
    private String taskNote;
 
