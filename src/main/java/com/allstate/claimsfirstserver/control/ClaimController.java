@@ -36,6 +36,7 @@ public class ClaimController {
         return claimService.getByPolicyNumber(policyNumber);
     }
 
+
     @GetMapping("/{id}")
     public Claim findById(@PathVariable Integer id) throws ClaimNotFoundException {
         return claimService.getById(id);

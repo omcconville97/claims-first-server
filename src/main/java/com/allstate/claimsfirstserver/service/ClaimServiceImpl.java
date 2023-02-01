@@ -123,17 +123,10 @@ public class ClaimServiceImpl implements ClaimService{
 //        if (fields.containsKey("taskDate")) {
 //            claim.setTaskDate(Date.from(Instant.parse(fields.get("taskDate").toString())));
 //        }
-
-
-        //update those fields that have changed
-//        if (fields.containsKey("country")) {
-//            payment.setCountry(fields.get("country").toString());
-//        }
 //        if (fields.containsKey("amount")) {
 //            //any logic e.g. is amount > 0?
 //            payment.setAmount(Double.parseDouble(fields.get("amount").toString()));
 //        }
-        //save and return the payment
         return claimRepository.save(claim);
     }
 }

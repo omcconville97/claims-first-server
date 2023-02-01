@@ -22,4 +22,5 @@ public interface ClaimService {
    public Claim saveClaim(Claim claim);
 
    public Claim updateClaim(Integer id, Map<String, Object> fields);
+
 }
