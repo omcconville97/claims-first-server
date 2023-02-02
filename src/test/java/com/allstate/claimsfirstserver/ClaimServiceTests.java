@@ -15,6 +15,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class ClaimServiceTests {
     @MockBean
     private ClaimRepository claimRepository;
 
-    Date now = new Date(System.currentTimeMillis());
+    LocalDate now = LocalDate.of(2023, Month.JANUARY,5);
     @Test
     public void testGetAllInsuranceTypes() {
         List<Claim> claims = new ArrayList<>();

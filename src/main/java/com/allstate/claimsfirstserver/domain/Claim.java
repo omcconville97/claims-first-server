@@ -1,8 +1,9 @@
 package com.allstate.claimsfirstserver.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,8 +21,7 @@ public class Claim {
    private String email;
    private String phoneNumber;
    private String insuranceType;
-   @JsonFormat(pattern = "yyyy-MM-dd")
-   private Date date;
+   private LocalDate date;
    private Double estimatedWorth;
    private String vehicleMake;
    private String vehicleModel;
@@ -32,11 +32,10 @@ public class Claim {
    private String reason;
    private String description;
    private String status;
-   @JsonFormat(pattern = "yyyy-MM-dd")
-   private Date taskDate;
+   private LocalDate taskDate;
    private String taskNote;
 
-   public Claim(Integer id, String policyNumber, String title, String firstName, String surname, String email, String phoneNumber, String insuranceType, Date date, Double estimatedWorth, String vehicleMake, String vehicleModel, Integer vehicleYear, String propertyAddress, String animalType, String animalBreed, String reason, String description, String status, Date taskDate, String taskNote)
+   public Claim(Integer id, String policyNumber, String title, String firstName, String surname, String email, String phoneNumber, String insuranceType, LocalDate date, Double estimatedWorth, String vehicleMake, String vehicleModel, Integer vehicleYear, String propertyAddress, String animalType, String animalBreed, String reason, String description, String status, LocalDate taskDate, String taskNote)
    {
       this.id = id;
       this.policyNumber = policyNumber;
@@ -143,12 +142,12 @@ public class Claim {
       this.insuranceType = insuranceType;
    }
 
-   public Date getDate()
+   public LocalDate getDate()
    {
       return date;
    }
 
-   public void setDate(Date date)
+   public void setDate(LocalDate date)
    {
       this.date = date;
    }
@@ -253,12 +252,12 @@ public class Claim {
       this.status = status;
    }
 
-   public Date getTaskDate()
+   public LocalDate getTaskDate()
    {
       return taskDate;
    }
 
-   public void setTaskDate(Date taskDate)
+   public void setTaskDate(LocalDate taskDate)
    {
       this.taskDate = taskDate;
    }

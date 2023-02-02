@@ -6,7 +6,7 @@ import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +69,9 @@ public class ClaimServiceImpl implements ClaimService{
     public Claim updateClaim(Integer id, Map<String, Object> fields) {
         Claim claim = claimRepository.findById(id).get(); //should really check it is there + throw an exception
 
+        if (fields.containsKey("policyNumber")) {
+            claim.setPolicyNumber(fields.get("policyNumber").toString());
+        }
         if (fields.containsKey("title")) {
             claim.setTitle(fields.get("title").toString());
         }
@@ -121,12 +124,18 @@ public class ClaimServiceImpl implements ClaimService{
             claim.setTaskNote(fields.get("taskNote").toString());
         }
 //        if (fields.containsKey("taskDate")) {
-//            claim.setTaskDate(Date.from(Instant.parse(fields.get("taskDate").toString())));
+//            claim.setTaskDate((Date) fields.get("taskDate"));
 //        }
-//        if (fields.containsKey("amount")) {
-//            //any logic e.g. is amount > 0?
-//            payment.setAmount(Double.parseDouble(fields.get("amount").toString()));
+//        if (fields.containsKey("date")) {
+//            claim.setDate((Date) fields.get("date"));
 //        }
+
+        if (fields.containsKey("taskDate")) {
+            claim.setTaskDate(LocalDate.parse(fields.get("taskDate").toString()));
+        }
+        if (fields.containsKey("date")) {
+            claim.setDate(LocalDate.parse(fields.get("date").toString()));
+        }
         return claimRepository.save(claim);
     }
 }
