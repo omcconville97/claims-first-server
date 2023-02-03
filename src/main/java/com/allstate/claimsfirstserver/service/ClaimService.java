@@ -18,6 +18,7 @@ public interface ClaimService {
    public List<Claim> getByPolicyNumber(String policyNumber);
 
    public List<String> getAllInsuranceTypes();
+   public List<String> getAllStatusTypes();
 
    public Claim saveClaim(Claim claim);
 

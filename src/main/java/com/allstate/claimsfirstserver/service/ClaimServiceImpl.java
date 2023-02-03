@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -56,6 +55,13 @@ public class ClaimServiceImpl implements ClaimService{
     public List<String> getAllInsuranceTypes() {
         return claimRepository.findAll().stream()
                 .map( claim -> claim.getInsuranceType().toLowerCase())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<String> getAllStatusTypes() {
+        return claimRepository.findAll().stream()
+                .map( claim -> claim.getStatus().toLowerCase())
                 .distinct()
                 .collect(Collectors.toList());
     }

@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
 @Service
 public class BootstrapService {
-   Date firstDate = new Date();
-
    @Autowired
    private ClaimRepository claimRepository;
 
@@ -58,7 +55,6 @@ public class BootstrapService {
          claimRepository.save(claim7);
          claimRepository.save(claim8);
          claimRepository.save(claim9);
-
       }
    }
 
