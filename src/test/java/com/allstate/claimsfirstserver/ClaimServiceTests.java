@@ -2,6 +2,7 @@ package com.allstate.claimsfirstserver;
 
 import com.allstate.claimsfirstserver.data.ClaimRepository;
 import com.allstate.claimsfirstserver.domain.Claim;
+import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
 import com.allstate.claimsfirstserver.service.ClaimService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -49,6 +50,23 @@ public class ClaimServiceTests {
 
         List<String> insuranceType = claimService.getAllInsuranceTypes();
         assertEquals(3, insuranceType.size());
+    }
+
+    @Test
+    public void testGetAllStatusTypes() {
+        List<Claim> claims = new ArrayList<>();
+        claims.add(new Claim(null, "", "","","", "","", "Pet", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Awaiting Assessment", now, ""));
+        claims.add(new Claim(null, "", "","","", "","", "Home", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Awaiting Assessment", now, ""));
+        claims.add(new Claim(null, "", "","","", "","", "Vehicle", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Rejected", now, ""));
+        claims.add(new Claim(null, "", "","","", "","", "Vehicle", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Ongoing", now, ""));
+        Mockito.when(claimRepository.findAll()).thenReturn(claims);
+
+        List<String> status = claimService.getAllStatusTypes();
+        assertEquals(3, status.size());
     }
 
 }
