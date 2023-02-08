@@ -1,7 +1,9 @@
 package com.allstate.claimsfirstserver.service;
 
 import com.allstate.claimsfirstserver.data.ClaimRepository;
+import com.allstate.claimsfirstserver.data.TaskRepository;
 import com.allstate.claimsfirstserver.domain.Claim;
+import com.allstate.claimsfirstserver.domain.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ import java.time.Month;
 public class BootstrapService {
    @Autowired
    private ClaimRepository claimRepository;
+
+   @Autowired
+   TaskRepository taskRepository;
 
    @PostConstruct
    public void setUpInitialData(){
@@ -55,6 +60,14 @@ public class BootstrapService {
          claimRepository.save(claim7);
          claimRepository.save(claim8);
          claimRepository.save(claim9);
+      }
+
+      if (taskRepository.count() == 0) {
+         Task task1 = new Task(1, "CF101", "Call Back client", false);
+         Task task2 = new Task(2, "CF103", "Call Back client", false);
+
+         taskRepository.save(task1);
+         taskRepository.save(task2);
       }
    }
 
