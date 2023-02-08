@@ -1,8 +1,7 @@
 package com.allstate.claimsfirstserver.control;
 
-import com.allstate.claimsfirstserver.domain.Claim;
 import com.allstate.claimsfirstserver.domain.Task;
-import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
+import com.allstate.claimsfirstserver.exceptions.TaskNotFoundException;
 import com.allstate.claimsfirstserver.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
-    TaskService taskService;
+    private TaskService taskService;
 
     @GetMapping()
     public List<Task> getAllTasks(@RequestParam(value = "taskPolicyNo", required = false) String taskPolicyNo) {
@@ -28,8 +27,13 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public Task findById(@PathVariable Integer id) throws ClaimNotFoundException {
+    public Task findById(@PathVariable Integer id) throws TaskNotFoundException {
         return taskService.getById(id);
+    }
+
+    @GetMapping("/status")
+    public List<Task> getByCompleted(@RequestParam(value = "completed", required = false) boolean completed) {
+        return taskService.getByCompleted(completed);
     }
 
     @PostMapping
@@ -39,7 +43,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable Integer id) throws ClaimNotFoundException{
+    public void deleteTask(@PathVariable Integer id) throws TaskNotFoundException{
         taskService.deleteTaskById(id);
     }
 }

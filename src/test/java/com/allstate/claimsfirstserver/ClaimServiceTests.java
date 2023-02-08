@@ -2,8 +2,8 @@ package com.allstate.claimsfirstserver;
 
 import com.allstate.claimsfirstserver.data.ClaimRepository;
 import com.allstate.claimsfirstserver.domain.Claim;
-import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
 import com.allstate.claimsfirstserver.service.ClaimService;
+import com.allstate.claimsfirstserver.service.TaskService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;

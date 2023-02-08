@@ -17,7 +17,7 @@ public class BootstrapService {
    private ClaimRepository claimRepository;
 
    @Autowired
-   TaskRepository taskRepository;
+   private TaskRepository taskRepository;
 
    @PostConstruct
    public void setUpInitialData(){

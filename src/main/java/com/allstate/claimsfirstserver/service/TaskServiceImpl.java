@@ -2,7 +2,7 @@ package com.allstate.claimsfirstserver.service;
 
 import com.allstate.claimsfirstserver.data.TaskRepository;
 import com.allstate.claimsfirstserver.domain.Task;
-import com.allstate.claimsfirstserver.exceptions.ClaimNotFoundException;
+import com.allstate.claimsfirstserver.exceptions.TaskNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class TaskServiceImpl implements TaskService{
 
     @Autowired
-    TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     @Override
     public List<Task> getAllTasks() {
@@ -23,18 +23,23 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public Task getById(Integer id) throws ClaimNotFoundException {
+    public Task getById(Integer id) throws TaskNotFoundException {
         Optional<Task> optionalTask = taskRepository.findById(id);
         if (optionalTask.isPresent()) {
             return optionalTask.get();
         } else {
-            throw new ClaimNotFoundException("There is no task with id " +id);
+            throw new TaskNotFoundException("There is no task with id " +id);
         }
     }
 
     @Override
     public List<Task> getByTaskPolicyNo(String taskPolicyNo) {
         return taskRepository.findAllByTaskPolicyNo(taskPolicyNo);
+    }
+
+    @Override
+    public List<Task> getByCompleted(boolean completed) {
+        return taskRepository.findAllByCompleted(completed);
     }
 
     @Override
