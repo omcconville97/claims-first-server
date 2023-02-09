@@ -64,7 +64,7 @@ public class BootstrapService {
 
       if (taskRepository.count() == 0) {
          Task task1 = new Task(1, "CF101", "Call Back client", false);
-         Task task2 = new Task(2, "CF103", "Call Back client", false);
+         Task task2 = new Task(2, "CF103", "Call Back client", true);
 
          taskRepository.save(task1);
          taskRepository.save(task2);
