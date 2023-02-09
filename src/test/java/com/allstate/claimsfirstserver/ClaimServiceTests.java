@@ -2,17 +2,15 @@ package com.allstate.claimsfirstserver;
 
 import com.allstate.claimsfirstserver.data.ClaimRepository;
 import com.allstate.claimsfirstserver.domain.Claim;
+import com.allstate.claimsfirstserver.domain.Task;
 import com.allstate.claimsfirstserver.service.ClaimService;
-import com.allstate.claimsfirstserver.service.TaskService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
@@ -21,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class ClaimServiceTests {
 
     @Autowired
@@ -66,6 +64,17 @@ public class ClaimServiceTests {
 
         List<String> status = claimService.getAllStatusTypes();
         assertEquals(3, status.size());
+    }
+
+    @Test
+    public void testFindByPolicyNumber() {
+        Claim claim1 = new Claim(null, "CF101", "","","", "","", "Pet", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Awaiting Assessment", now, "");
+        Claim claim2 = new Claim(null, "CF102", "","","", "","", "Pet", now, 0.00, "", "", 0,
+                "", "", "", "", "", "Awaiting Assessment", now, "");
+
+        assertEquals("CF101", claim1.getPolicyNumber());
+        assertNotEquals("CF101", claim2.getPolicyNumber());
     }
 
 }
